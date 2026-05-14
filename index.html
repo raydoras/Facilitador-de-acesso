@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Título do projeto</title>
+    <meta name="description" content="Portal de acesso ao projeto---. Insira seu código para acessar os formulários das atividades.">
+    
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+        
+        .logo-projeto { color: #202124; font-size: 26px; font-weight: bold; margin-bottom: 10px; }
+        .logo-projeto span { color: #1b9403; } 
+
+    
+        p { color: #5f6368; font-size: 14px; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; border: 2px solid #dfe1e5; border-radius: 24px; font-size: 16px; text-align: center; box-sizing: border-box; outline: none; }
+        input:focus { border-color: #e59a30; }
+        button { background-color: #e27929; color: white; border: none; padding: 12px 20px; border-radius: 24px; cursor: pointer; font-size: 16px; width: 100%; margin-top: 15px; font-weight: 500; }
+        button:hover { background-color: #e8731a; }
+        #mensagemErro { color: #d93025; font-size: 13px; margin-top: 10px; display: none; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-projeto">Título<span>T2</span></div>
+        <p>Introduza o código da atividade para continuar</p>
+        
+        <input type="text" id="inputCodigo" placeholder="Digite o código aqui">
+        <button onclick="acessar()">Aceder ao Formulário</button>
+        
+        <div id="mensagemErro">Código não encontrado. Tente novamente.</div>
+    </div>
+
+    <script>
+        
+        function acessar() {
+            const campo = document.getElementById('inputCodigo');
+            const erro = document.getElementById('mensagemErro');
+            const codigo = campo.value.trim().toUpperCase();
+
+            const baseDeDados = {
+                "C1": "https://docs.google.com/forms/LINK1",
+                "C2": "https://docs.google.com/forms/LINK2",
+                "C3": "https://docs.google.com/forms/LINK3",
+                "C4": "https://docs.google.com/forms/LINK4",
+                "C5": "https://docs.google.com/forms/LINK5",
+                "C6": "https://docs.google.com/forms/LINK6"
+            };
+
+            if (baseDeDados[codigo]) {
+                erro.style.display = 'none';
+                window.location.href = baseDeDados[codigo];
+            } else {
+                erro.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
